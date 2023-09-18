@@ -35,6 +35,6 @@ Configure the components settings in the panel to the right:
 This is what the Custom Highlights Panel looks like after it's been added to your Record Page and configured:
 
 <p align="center">
-<img src="docs/images/highlight-panel-in-action.gif" width="700" alt="Add Component">
+<img src="docs/images/highlight-panel-in-action.gif" width="1000" alt="Add Component">
 </p>
 
