@@ -12,7 +12,17 @@ export default class HighlightPanel extends LightningElement {
     @api
     fieldSetName
 
+    @api
+    disableStickyMode
+
+    @api
+    highlightsPanelAboveContainer
+
+    @api
+    higlightsPanelCompactViewEnabled
+    
     resultItems;
+    isLoaded = false;
 
     @wire(getRecord, {
         recordId: "$recordId",
@@ -29,10 +39,12 @@ export default class HighlightPanel extends LightningElement {
         .then(data => {
             this.resultItems = data;
             this.error = undefined;
+            this.isLoaded = true;
         })
         .catch(error => {
             this.error = error;
             this.resultItems = undefined;
+            this.isLoaded = true;
         })
     }
 

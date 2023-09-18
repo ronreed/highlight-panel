@@ -9,7 +9,10 @@
     </targets>
     <targetConfigs>  
         <targetConfig targets="lightning__RecordPage">
-            <property name="fieldSetName" type="String" label="Field Set Name" default="" required="true"/>
+            <property name="fieldSetName"  type="String" label="Field Set Name" required="true" datasource="apex://FieldSetDynamicPicklist"/>
+            <property name="disableStickyMode" type="Boolean" label="Disable Sticky Mode" default="false"/>
+            <property name="highlightsPanelAboveContainer" type="Boolean" label="Standard Highlights Panel is Visible Above Component" default="true" />
+            <property name="higlightsPanelCompactViewEnabled" type="Boolean" label="Standard Highlights Panel Compact View is Enabled" default="true" />
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>

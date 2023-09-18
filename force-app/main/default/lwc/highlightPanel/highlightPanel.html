@@ -1,37 +1,47 @@
 <template>
+
     <c-sticky-container
-        highlights-panel-above-container="true"
-        highlights-panel-compact-view-enabled="true"
+        is-disabled={disableStickyMode}
+        highlights-panel-above-container={highlightsPanelAboveContainer}
+        highlights-panel-compact-view-enabled={higlightsPanelCompactViewEnabled}
     >
         <span slot="body">
             <div class="slds-card slds-var-p-around_medium">
-                <div class="slds-grid">
-                    <template lwc:if={resultItems}>
-                        <template for:each={resultItems} for:item="res">
-                            <div
-                                class="slds-var-p-right_xx-large"
-                                key={res.fieldLabel}
-                            >
-                                <lightning-record-view-form
-                                    record-id={res.recordId}
-                                    object-api-name={res.objectApiName}
+                <div class="slds-grid" style="min-height:45px">
+                    <template lwc:if={isLoaded}>
+                        <template lwc:if={resultItems}>
+                            <template for:each={resultItems} for:item="res">
+                                <div
+                                    class="slds-var-p-right_xx-large"
+                                    style="overflow: hidden;"
+                                    key={res.fieldLabel}
                                 >
-                                    <lightning-layout-item>
-                                        <div
-                                            class="slds-text-title slds-truncate"
-                                        >
-                                            {res.fieldLabel}
-                                        </div>
-                                        <lightning-output-field
-                                            variant="label-hidden"
-                                            field-class="slds-text-body--regular slds-show_inline-block slds-truncate"
-                                            field-name={res.fieldName}
-                                        >
-                                        </lightning-output-field>
-                                    </lightning-layout-item>
-                                </lightning-record-view-form>
-                            </div>
+                                    <lightning-record-view-form
+                                        record-id={res.recordId}
+                                        object-api-name={res.objectApiName}
+                                    >
+                                        <lightning-layout-item>
+                                            <div
+                                                class="slds-text-title slds-truncate"
+                                                title={res.fieldLabel}
+                                            >
+                                                {res.fieldLabel}
+                                            </div>
+                                            <lightning-output-field
+                                                variant="label-hidden"
+                                                field-class="slds-text-body--regular slds-show_inline-block slds-truncate"
+                                                field-name={res.fieldName}
+                                            >
+                                            </lightning-output-field>
+                                        </lightning-layout-item>
+                                    </lightning-record-view-form>
+                                </div>
+                            </template>
                         </template>
+                    </template>
+                    <template lwc:else>
+                        <lightning-spinner alternative-text="Loading..." variant="brand" size="medium">
+                        </lightning-spinner>
                     </template>
                 </div>
             </div>
