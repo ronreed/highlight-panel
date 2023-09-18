@@ -1,11 +1,13 @@
+/** @format */
+
 public class FieldSetDefinition {
-    private SObjectType sObjType;
+    private SObjectType sObjectType;
     private String fieldSetName;
     public Map<String, Member> members { get; private set; }
     private static final String ID_FIELD_NAME = 'Id';
 
-    public FieldSetDefinition(SObjectType sObjType, String fieldSetName) {
-        this.sObjType = sObjType;
+    public FieldSetDefinition(SObjectType sObjectType, String fieldSetName) {
+        this.sObjectType = sObjectType;
         this.fieldSetName = fieldSetName;
     }
 
@@ -21,12 +23,12 @@ public class FieldSetDefinition {
     public Map<String, Member> getMembers() {
         Map<String, Member> members = new Map<String, Member>();
         for (
-            Schema.FieldSetMember field : this.sObjType.getDescribe()
+            Schema.FieldSetMember field : this.sObjectType.getDescribe()
                 .fieldSets.getMap()
                 .get(this.fieldSetName)
                 .getFields()
         ) {
-            Member member = new Member(field);
+            Member member = new Member(field, this.sObjectType);
             members.put(member.fieldPath, member);
         }
         return members;
@@ -47,10 +49,12 @@ public class FieldSetDefinition {
         public String fieldLabel;
         public String idFieldName;
 
-        public Member(FieldSetMember member) {
+        public Member(FieldSetMember member, SObjectType sObjectType) {
             SObjectField sObjField = member.getSObjectField();
-            SObjectType sObjType = sObjField.getDescribe().getSObjectType();
-            this.objectName = sObjType.getDescribe().getName();
+            this.objectName = sObjField.getDescribe()
+                .getSObjectType()
+                .getDescribe()
+                .getName();
             this.fieldPath = member.getFieldPath();
             this.fieldName = sObjField.getDescribe().getName();
             this.fieldLabel = getCleanedFieldLabel(sObjField);
@@ -59,7 +63,7 @@ public class FieldSetDefinition {
                     '.'
                 );
                 SObjectField idField = ParentRelationshipCache.get(
-                    sObjType,
+                    sObjectType,
                     parentRelationshipName
                 );
                 this.idFieldName = idField.getDescribe().getName();

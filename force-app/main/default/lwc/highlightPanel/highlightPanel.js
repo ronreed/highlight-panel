@@ -36,9 +36,11 @@ export default class HighlightPanel extends LightningElement {
     refreshFieldResultItems() {
         getFieldResultItems({ recordId: this.recordId, fieldSetName: this.fieldSetName })
         .then(data => {
-            this.resultItems = data;
-            this.error = undefined;
-            this.isLoaded = true;
+            if (data?.length) {
+                this.resultItems = data;
+                this.error = undefined;
+                this.isLoaded = true;
+            }
         })
         .catch(error => {
             this.error = error;
