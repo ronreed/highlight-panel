@@ -12,14 +12,14 @@ Create a Field Set for the object in which you want to display the Custom Highli
 </p>
 
 ### Add to Lightning Record Page
-Go to the Record Page for your object and search for Custom Highlight Panel in the Components search box. Drag the Custom Highlight Panel component onto your page.r
+Go to the Record Page for your object and search for Custom Highlight Panel in the Components search box. Drag the Custom Highlight Panel component onto your page.
 
 <p align="center">
 <img src="docs/images/add-component-record-page.png" width="700" alt="Add Component">
 </p>
 
 ### Configure Component Settings
-Configure the components settings in the panel to the right - 
+Configure the components settings in the panel to the right: 
 
 1. `Field Set Name`: Select the Field Set Name you created in the previous step.  
 2. `Disable Sticky Mode`: Sticky Mode freezes the component to the top of the screen when you are scrolling and it reaches the top. Checking Disable Sticky Mode will not freeze the component.
@@ -32,7 +32,7 @@ Configure the components settings in the panel to the right -
 
 ## See it in Action
 
-This is what the Custom Highlights Panel looks like after it's been added to your Record Page and configured
+This is what the Custom Highlights Panel looks like after it's been added to your Record Page and configured:
 
 <p align="center">
 <img src="docs/images/highlight-panel-in-action.gif" width="700" alt="Add Component">
