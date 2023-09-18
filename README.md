@@ -1,6 +1,6 @@
 # Custom Highlights Panel
 
-The Custom Highlights Panel provides more flexibility in the number of fields that can be displayed at the top of your record page. In addition, you can display parent (or grandparent, great-grandparent, etc) fields related to the current record.
+The Custom Highlights Panel provides more flexibility in the number of fields that can be displayed at the top of your record page. In addition, you can display parent fields related to the current record.
 
 ## Setup
 
