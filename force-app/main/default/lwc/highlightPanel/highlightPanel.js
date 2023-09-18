@@ -29,7 +29,6 @@ export default class HighlightPanel extends LightningElement {
         fields: FIELDS,
       })
       handleRecordData(wireResult) {
-        console.log(wireResult);
         this.resultItems = undefined;
         this.refreshFieldResultItems();
     }
